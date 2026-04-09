@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,255,0.5); }
+
+/* Gradient heading */
+.gradient-text {
+  background: linear-gradient(120deg, #ffffff 0%, #a0e9ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dot grid overlay */
+.dot-grid {
+  background-image: radial-gradient(rgba(0,212,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Hero fade-up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scroll line bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50%       { transform: scaleY(0.5); opacity: 0.2; }
+}
+.scroll-line {
+  animation: scrollBounce 1.8s ease-in-out infinite;
+  transform-origin: top;
+}
+
+/* Hover glow effects — CSS only, works in server components */
+.card-hover {
+  transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+}
+.card-hover:hover {
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.09);
+}
+
+.btn-glow {
+  transition: background 0.25s, box-shadow 0.25s;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 32px rgba(0, 212, 255, 0.45);
 }

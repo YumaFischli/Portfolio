@@ -1,9 +1,10 @@
-const NAV_LINKS = ["About", "Skills", "Projects", "Contact"];
+import ParticleCanvas from "./components/ParticleCanvas";
+import Navbar from "./components/Navbar";
 
 const SKILLS = [
   { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "Python", "REST APIs", "SQL"] },
-  { category: "Tools", items: ["Git", "GitHub", "Vercel", "VS Code"] },
+  { category: "Backend",  items: ["Node.js", "Python", "REST APIs", "SQL"] },
+  { category: "Tools",    items: ["Git", "GitHub", "Vercel", "VS Code"] },
 ];
 
 const PROJECTS = [
@@ -33,98 +34,118 @@ const PROJECTS = [
 export default function Home() {
   return (
     <>
-      {/* ── Navbar ── */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
-        <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <a href="#hero" className="text-lg font-semibold tracking-tight">
-            Your Name
-          </a>
-          <ul className="flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            {NAV_LINKS.map((link) => (
-              <li key={link}>
-                <a
-                  href={`#${link.toLowerCase()}`}
-                  className="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+      {/* Fixed background layers */}
+      <div className="fixed inset-0 z-0 bg-black" />
+      <div className="dot-grid fixed inset-0 z-0" />
+      <ParticleCanvas />
 
-      <main className="mx-auto max-w-5xl px-6">
+      <Navbar />
+
+      <main className="relative z-10 mx-auto max-w-6xl px-8">
+
         {/* ── Hero ── */}
-        <section
-          id="hero"
-          className="flex min-h-screen flex-col items-start justify-center pt-20"
-        >
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-indigo-500">
-            Hello, world! I&apos;m
+        <section id="hero" className="flex min-h-screen flex-col justify-center pt-24">
+          <p
+            className="fade-up mb-3 font-mono text-xs font-semibold uppercase tracking-[0.3em] text-cyan-400"
+            style={{ animationDelay: "0s" }}
+          >
+            Available for work
           </p>
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
+
+          <h1
+            className="fade-up gradient-text text-6xl font-bold tracking-tight sm:text-8xl"
+            style={{ animationDelay: "0.1s" }}
+          >
             Your Name
           </h1>
-          <p className="mt-4 text-2xl font-medium text-zinc-500 dark:text-zinc-400 sm:text-3xl">
+
+          <p
+            className="fade-up mt-4 text-2xl font-light text-zinc-400 sm:text-3xl"
+            style={{ animationDelay: "0.2s" }}
+          >
             Full-Stack Developer
           </p>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-            I build fast, accessible, and beautiful web applications. Passionate
-            about great developer experience and clean code.
+
+          <p
+            className="fade-up mt-6 max-w-lg text-base leading-relaxed text-zinc-500"
+            style={{ animationDelay: "0.3s" }}
+          >
+            I craft fast, accessible, and beautiful web applications — focused on
+            clean architecture and exceptional user experience.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+
+          <div
+            className="fade-up mt-10 flex flex-wrap gap-4"
+            style={{ animationDelay: "0.4s" }}
+          >
             <a
               href="#projects"
-              className="rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+              className="btn-glow rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-black hover:bg-cyan-300"
             >
-              See my work
+              View Projects
             </a>
             <a
               href="#contact"
-              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+              className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/5"
             >
-              Get in touch
+              Contact Me
             </a>
+          </div>
+
+          {/* Scroll indicator */}
+          <div
+            className="fade-up mt-20 flex flex-col items-start gap-1.5"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-700">
+              Scroll
+            </span>
+            <div className="scroll-line h-10 w-px bg-gradient-to-b from-cyan-400/50 to-transparent" />
           </div>
         </section>
 
         {/* ── About ── */}
-        <section id="about" className="py-24">
-          <SectionHeading label="About" title="Who I am" />
-          <div className="mt-10 grid gap-10 md:grid-cols-2">
-            <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+        <section id="about" className="py-32">
+          <SectionLabel>About</SectionLabel>
+          <h2 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+            Who I am
+          </h2>
+          <div className="mt-10 grid gap-8 border-t border-white/5 pt-10 md:grid-cols-2">
+            <p className="text-base leading-relaxed text-zinc-400">
               I&apos;m a developer based in [Your City], focused on creating
               thoughtful digital experiences. I love turning complex problems
               into simple, beautiful, and intuitive solutions.
             </p>
-            <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              When I&apos;m not coding, you can find me [your hobby], [your
-              other hobby], or exploring new technologies. I&apos;m always open
-              to new opportunities and collaborations.
+            <p className="text-base leading-relaxed text-zinc-400">
+              When I&apos;m not coding, you can find me [your hobby],
+              [your other hobby], or exploring new technologies. I&apos;m
+              always open to new opportunities and collaborations.
             </p>
           </div>
         </section>
 
         {/* ── Skills ── */}
-        <section id="skills" className="py-24">
-          <SectionHeading label="Skills" title="What I work with" />
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <section id="skills" className="py-32">
+          <SectionLabel>Skills</SectionLabel>
+          <h2 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+            What I work with
+          </h2>
+          <div className="mt-12 grid gap-4 sm:grid-cols-3">
             {SKILLS.map(({ category, items }) => (
               <div
                 key={category}
-                className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800"
+                className="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7 hover:border-cyan-400/30 hover:bg-white/[0.06]"
               >
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-indigo-500">
+                <h3 className="mb-5 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-400">
                   {category}
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {items.map((skill) => (
                     <li
                       key={skill}
-                      className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300"
+                      className="flex items-center gap-3 text-sm text-zinc-300"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+                      <span className="h-px w-5 shrink-0 bg-cyan-400/40" />
                       {skill}
                     </li>
                   ))}
@@ -135,40 +156,45 @@ export default function Home() {
         </section>
 
         {/* ── Projects ── */}
-        <section id="projects" className="py-24">
-          <SectionHeading label="Projects" title="Things I've built" />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="projects" className="py-32">
+          <SectionLabel>Projects</SectionLabel>
+          <h2 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+            Things I&apos;ve built
+          </h2>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((project) => (
               <article
                 key={project.title}
-                className="flex flex-col rounded-2xl border border-zinc-200 p-6 transition-shadow hover:shadow-md dark:border-zinc-800"
+                className="card-hover flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 hover:border-cyan-400/30 hover:bg-white/[0.06]"
               >
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <h3 className="text-base font-semibold text-white">
+                  {project.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-500">
                   {project.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                      className="rounded-full border border-white/10 px-3 py-1 font-mono text-[10px] text-zinc-400"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="mt-5 flex gap-4 text-sm font-medium">
+                <div className="mt-5 flex gap-5 text-xs font-medium">
                   <a
                     href={project.github}
-                    className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
+                    className="text-zinc-600 transition-colors hover:text-white"
                   >
-                    GitHub →
+                    GitHub ↗
                   </a>
                   <a
                     href={project.live}
-                    className="text-indigo-500 hover:text-indigo-400"
+                    className="text-cyan-400 transition-colors hover:text-cyan-300"
                   >
-                    Live →
+                    Live ↗
                   </a>
                 </div>
               </article>
@@ -177,24 +203,27 @@ export default function Home() {
         </section>
 
         {/* ── Contact ── */}
-        <section id="contact" className="py-24">
-          <SectionHeading label="Contact" title="Let's work together" />
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+        <section id="contact" className="py-32">
+          <SectionLabel>Contact</SectionLabel>
+          <h2 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+            Let&apos;s talk
+          </h2>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-zinc-400">
             I&apos;m currently open to new opportunities. Whether you have a
             project in mind or just want to say hi — my inbox is always open.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="mailto:your@email.com"
-              className="rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+              className="btn-glow rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-black hover:bg-cyan-300"
             >
-              Say Hello
+              Say Hello ↗
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/YumaFischli"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+              className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/5"
             >
               GitHub
             </a>
@@ -202,7 +231,7 @@ export default function Home() {
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+              className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/5"
             >
               LinkedIn
             </a>
@@ -210,21 +239,17 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="mt-10 border-t border-zinc-200 py-8 text-center text-sm text-zinc-400 dark:border-zinc-800">
-        © {new Date().getFullYear()} Your Name. Built with Next.js & Tailwind CSS.
+      <footer className="relative z-10 border-t border-white/5 py-8 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-700">
+        © {new Date().getFullYear()} Your Name — Built with Next.js &amp; Tailwind CSS
       </footer>
     </>
   );
 }
 
-function SectionHeading({ label, title }: { label: string; title: string }) {
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <p className="text-sm font-medium uppercase tracking-widest text-indigo-500">
-        {label}
-      </p>
-      <h2 className="mt-1 text-4xl font-bold tracking-tight">{title}</h2>
-    </div>
+    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan-400">
+      {children}
+    </p>
   );
 }

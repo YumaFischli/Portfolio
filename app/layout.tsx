@@ -14,22 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Your Name — Portfolio",
-  description: "Personal portfolio website",
+  description: "Full-Stack Developer — personal portfolio",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
