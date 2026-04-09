@@ -56,7 +56,7 @@ export default function Home() {
             className="fade-up gradient-text text-6xl font-bold tracking-tight sm:text-8xl"
             style={{ animationDelay: "0.1s" }}
           >
-            Your Name
+            Yuma Fischli
           </h1>
 
           <p
@@ -214,7 +214,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="mailto:your@email.com"
+              href="mailto:yfischli@ethz.ch"
               className="btn-glow rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-black hover:bg-cyan-300"
             >
               Say Hello ↗
@@ -228,7 +228,7 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/yuma-fischli-a1b247268/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-white/20 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/5"
@@ -240,7 +240,7 @@ export default function Home() {
       </main>
 
       <footer className="relative z-10 border-t border-white/5 py-8 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-700">
-        © {new Date().getFullYear()} Your Name — Built with Next.js &amp; Tailwind CSS
+        © {new Date().getFullYear()} Yuma Fischli — Built with Next.js &amp; Tailwind CSS
       </footer>
     </>
   );

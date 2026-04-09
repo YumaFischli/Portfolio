@@ -27,7 +27,7 @@ export default function Navbar() {
           href="#hero"
           className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400"
         >
-          YN.dev
+          YF.dev
         </a>
         <ul className="flex gap-8">
           {NAV_LINKS.map((link) => (
